@@ -1,0 +1,2 @@
+module CrashlogsHelper
+end

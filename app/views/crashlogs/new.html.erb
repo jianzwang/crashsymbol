@@ -1,0 +1,7 @@
+<h1>New Article</h1>
+
+<%= form_for( :crashlog, url:{action: "create"}, :authenticity_token => true,remote: true,multipart: true) do |f| %>  
+  <%= f.label :name %><br/>
+  <%= f.file_field :log %>
+  <%= f.submit ("Submit") %>
+<% end %>
