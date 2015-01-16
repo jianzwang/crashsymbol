@@ -1,0 +1,59 @@
+<h1>New Article</h1>
+
+
+<ul id="crashlogs">
+	<%= render @crashlogs %>
+</ul>
+
+<br/>
+
+<!--
+<%= form_for(@crashlog, url:{action: "create",html: {id: :form_id }},   :authenticity_token => true,remote: true,multipart: true) do |f| %>  
+  <%= f.label :name %><br/>
+  <%= f.file_field :log %> 
+   <%= f.text_field :name %>
+  <%= f.submit ("Submit") %>
+<% end %>
+
+-->
+
+<form method="post" id="uploadfile" name="fileinfo" onsubmit="return submitForm();">
+        <label>Select a file:</label><br>
+        <input type="file" name="log" required />
+        <input type="submit" value="Upload" />
+    </form>
+<div id="new_article"></div>
+
+<script type="text/javascript">
+	 function submitForm() {
+            console.log("submit event");
+            var fd = new FormData(document.getElementById("uploadfile"));
+            fd.append("label", "WEBUPLOAD");
+            $.ajax({
+              url: "",
+              type: "POST",
+              data: fd,
+              accepts:'application/json'
+              enctype: 'multipart/form-data',
+              processData: false,  // tell jQuery not to process the data
+              contentType: false   // tell jQuery not to set contentType
+            }).done(function( data ) {
+                console.log("PHP Output:");
+                console.log( data );
+            });
+            return false;
+        }
+</script>
+<!--
+<script>
+$(document).ready(function(){
+  $("#new_crashlog").on("ajax:success", function(e, data, status, xhr){
+  	alert('123');
+    $("#new_article").append(xhr.responseText)
+}).on("ajax:error", function(e, xhr, status, error){
+	alert('123');
+    $("#new_article").append("<p>ERROR</p>")
+})})
+</script>
+
+-->

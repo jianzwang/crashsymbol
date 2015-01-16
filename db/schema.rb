@@ -11,13 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150113081302) do
+ActiveRecord::Schema.define(version: 20150116022330) do
 
   create_table "crashlogs", force: :cascade do |t|
     t.text     "name"
     t.integer  "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "incidentId"
+    t.text     "version"
+    t.text     "crashDate"
+    t.text     "osVersion"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "shortVersion"
   end
 
 end
